@@ -14,13 +14,20 @@ const increaseRankBy = n => {
   }
 }
 
-const deepestChild = () => {
-  let node = document.getElementById("grand-node")
-  let nextNode = node.children[0]
+const deepestChild = (el) =>{
+  el = el || document.querySelector('#grand-node')
 
-  while (nextNode) {
-    node = nextNode
-    nextNode = node.children[0]
+  if (el.children.length > 0) {
+    return deepestChild(el.children[0])
+  } else {
+    return el;
   }
-  return node
 }
+
+// const deepestChild = () =>{
+//   let el = document.querySelector('#grand-node')
+//   while (el.children.length > 0) {
+//     el = el.children[0]
+//   }
+//   return el;
+// }
